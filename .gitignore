@@ -1,0 +1,31 @@
+local.properties
+.gradle/
+.kotlin/
+**/build/
+.idea/
+*.iml
+.tools/
+.docs/evidence/
+.env
+.env.*
+!.env.example
+secrets.properties
+keystore.properties
+*.jks
+*.keystore
+
+# 공모전 접수양식·개인정보 동의서는 저장소에 넣지 않는다 (SETUP.md 7.1)
+.docs/contest-application-consent.docx
+*.docx
+
+# 시험 전용 음악 앱의 음원(내려받아 넣음, 저장소에 넣지 않음)
+testmusic/src/main/assets/
+
+# 사용자 원본 자료(팀원 녹음 원본·디자인 zip·참고 이미지): 저장소에 넣지 않는다.
+# 앱에 쓰는 녹음은 변환본 seed/audio/seed-kim.m4a·seed-jeon.m4a에 있다.
+/*_HEARTz_script.m4a
+/*.zip
+/image.png
+
+# 공모전 기획서(접수양식·수정안): 개인정보가 들어 있어 저장소에 넣지 않는다
+/ULSANER_*

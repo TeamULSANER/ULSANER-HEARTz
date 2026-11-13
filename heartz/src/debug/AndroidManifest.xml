@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- debug 전용: M0 진단 화면의 "시험용 경로 요청"(내비 안내 활성 상태 재현). 릴리스에는 병합되지 않는다. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="pleos.car.permission.NAVI_ROUTE_SEARCH" />
+    <!-- debug 전용: 지도 위 오버레이 가능 여부 검증(OVERLAY_PROBE). 릴리스에는 선언하지 않는다. -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application>
+        <!-- debug 전용 시험 입력(adb broadcast). 사용자 경로의 증거로 쓰지 않는다. -->
+        <receiver
+            android:name=".debug.DebugCommandReceiver"
+            android:exported="true"
+            tools:ignore="ExportedReceiver" />
+    </application>
+</manifest>

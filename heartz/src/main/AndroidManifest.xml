@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature
+        android:name="android.hardware.type.automotive"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
+
+    <!-- 차량 위치 (FusedLocation SDK, dangerous → 런타임 요청) -->
+    <uses-permission android:name="pleos.car.permission.FUSED_LOCATION" />
+    <!-- NaviHelper get*Info() 조회 (M0 비교용, normal) -->
+    <uses-permission android:name="pleos.car.permission.NAVI_ROUTE" />
+    <!-- Pleos TextToSpeech / SpeechToText SDK (ON_DEVICE 모드, 앱 등록·비밀키 없음) -->
+    <uses-permission android:name="pleos.car.permission.TTS_SERVICE" />
+    <uses-permission android:name="pleos.car.permission.STT_SERVICE" />
+    <!-- 녹음 (런타임 요청) -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+
+    <!--
+        appCategory="audio": Pleos Music/Audio 앱 개발 가이드(미디어 앱 라이브러리 연동).
+    -->
+    <application
+        android:name=".HeartzApp"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:appCategory="audio"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Heartz"
+        tools:targetApi="35">
+
+        <meta-data
+            android:name="androidx.car.app.launchable"
+            android:value="true" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="true"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|density|uiMode|keyboardHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!--
+                Gleo 앱 액션(assets/schema.json). 가이드: 액션 = 함수 이름, category DEFAULT.
+                AVD 시스템 앱(ai.umos.mediaapp)은 "패키지.함수 이름" 형식을 쓰므로 둘 다 받는다.
+                실제 Gleo 음성 → 호출 end-to-end는 미검증(adb 모의 호출만 확인).
+            -->
+            <intent-filter>
+                <action android:name="START_STORY_RECORDING" />
+                <action android:name="MANAGE_MY_STORY" />
+                <action android:name="HANDLE_ARRIVED_LETTER" />
+                <action android:name="ai.heartz.app.START_STORY_RECORDING" />
+                <action android:name="ai.heartz.app.MANAGE_MY_STORY" />
+                <action android:name="ai.heartz.app.HANDLE_ARRIVED_LETTER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <!--
+                DO 선언: 사용자 결정(2026-11-09)에 따라 청취 화면에 선언한다.
+                근거·제한 적용 방식·심사 미확인 상태는 .docs/SETUP-RESULTS.md "Heartz 주행 중 화면(DO)" 절.
+                주행 중에는 CarUxRestrictions에 따라 정적 카드와 듣기/정지만 노출한다.
+            -->
+            <meta-data
+                android:name="distractionOptimized"
+                android:value="true" />
+        </activity>
+
+        <!-- 시스템 미디어 앱·컨트롤러가 MediaBrowserService로 바인딩해야 하므로 export한다(Pleos Music/Audio 가이드). -->
+        <service
+            android:name=".platform.audio.HeartzPlaybackService"
+            tools:ignore="ExportedService"
+            android:exported="true"
+            android:foregroundServiceType="mediaPlayback">
+            <intent-filter>
+                <action android:name="androidx.media3.session.MediaLibraryService" />
+                <action android:name="android.media.browse.MediaBrowserService" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>

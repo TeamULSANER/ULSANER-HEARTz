@@ -1,0 +1,8 @@
+Upstream: https://github.com/multica-ai/andrej-karpathy-skills
+Commit: 2c606141936f1eeef17fa3043a72095b4765b9c2 (skills/karpathy-guidelines)
+
+The upstream repository at this commit has no root LICENSE file.
+The license is declared as "MIT" in:
+  - skills/karpathy-guidelines/SKILL.md frontmatter (license: MIT)
+  - .claude-plugin/plugin.json ("license": "MIT")
+No license text was fabricated here; check upstream for any later LICENSE file.

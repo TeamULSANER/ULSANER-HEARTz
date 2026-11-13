@@ -1,0 +1,51 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "image.png",
+  "tiger": "Unmodified user reference copied to avatar_tiger.png",
+  "generated": [
+    {
+      "id": "rat",
+      "path": "/home/autolab/.codex/generated_images/01a1cbdc-681f-74a3-abeb-f2c7de249bfa/exec-b68def2b-2a8c-4380-8eb3-8185fd9a345e.png"
+    },
+    {
+      "id": "ox",
+      "path": "/home/autolab/.codex/generated_images/01a1cbdc-681f-74a3-abeb-f2c7de249bfa/exec-4adb091d-29a7-4d1a-a335-64a45cc71541.png"
+    },
+    {
+      "id": "rabbit",
+      "path": "/home/autolab/.codex/generated_images/01a1cbdc-681f-74a3-abeb-f2c7de249bfa/exec-cd666b1a-3260-4974-8bb7-9e54caabeffa.png"
+    },
+    {
+      "id": "dragon",
+      "path": "/home/autolab/.codex/generated_images/01a1cbdc-681f-74a3-abeb-f2c7de249bfa/exec-d3114c5c-5f0a-430e-b5a9-ef856aef6344.png"
+    },
+    {
+      "id": "snake",
+      "path": "/home/autolab/.codex/generated_images/01a1cbdc-681f-74a3-abeb-f2c7de249bfa/exec-53d11790-5aef-4ea1-87a2-8e842794ffe6.png"
+    },
+    {
+      "id": "horse",
+      "path": "/home/autolab/.codex/generated_images/01a1cbdc-681f-74a3-abeb-f2c7de249bfa/exec-d6f6c576-bd5d-4d79-aa9f-601f858e7292.png"
+    },
+    {
+      "id": "sheep",
+      "path": "/home/autolab/.codex/generated_images/01a1cbdc-681f-74a3-abeb-f2c7de249bfa/exec-6a1378f3-5544-4aee-9eed-9fce4f7a864a.png"
+    },
+    {
+      "id": "monkey",
+      "path": "/home/autolab/.codex/generated_images/01a1cbdc-681f-74a3-abeb-f2c7de249bfa/exec-aa9f3573-aa05-444a-9dac-0d4ee0cdbdef.png"
+    },
+    {
+      "id": "rooster",
+      "path": "/home/autolab/.codex/generated_images/01a1cbdc-681f-74a3-abeb-f2c7de249bfa/exec-8821e7c1-565c-4845-99f3-c8155ff3183a.png"
+    },
+    {
+      "id": "dog",
+      "path": "/home/autolab/.codex/generated_images/01a1cbdc-681f-74a3-abeb-f2c7de249bfa/exec-72af7ab3-dc09-47a6-a8ea-1b558eb1b577.png"
+    },
+    {
+      "id": "pig",
+      "path": "/home/autolab/.codex/generated_images/01a1cbdc-681f-74a3-abeb-f2c7de249bfa/exec-75b6b3f1-8b33-4444-a6ed-92909c8b5352.png"
+    }
+  ]
+}

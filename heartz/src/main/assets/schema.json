@@ -1,0 +1,80 @@
+{
+  "packageName": "ai.heartz.app",
+  "appDescription": "A car app that reads aloud short voice stories that people left at places on the current road, and lets the driver leave a voice story for the place being passed.",
+  "version": "0.4.0",
+  "actionCalls": [
+    {
+      "type": "function",
+      "function": {
+        "name": "START_STORY_RECORDING",
+        "component": "activity",
+        "description": "Starts recording the driver's voice story for the place the car is passing now; recording ends automatically when the driver stops talking.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "MANAGE_MY_STORY",
+        "component": "activity",
+        "description": "Handles the driver's own voice story that is being recorded or was just recorded: finish it, send it for review (optionally choosing the original or a modulated voice), record it again, or discard it.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "decision": {
+              "type": "string",
+              "enum": [
+                "FINISH",
+                "SUBMIT",
+                "RERECORD",
+                "DISCARD"
+              ],
+              "description": "FINISH stops recording, SUBMIT sends the story to be shared after review, RERECORD throws away the recording and records it again for the same place, DISCARD throws it away."
+            },
+            "voice": {
+              "type": "string",
+              "enum": [
+                "ORIGINAL",
+                "MODULATED"
+              ],
+              "description": "Optional, only with SUBMIT. ORIGINAL delivers the driver's own recorded voice, MODULATED delivers the story read by a synthetic voice instead."
+            }
+          },
+          "required": [
+            "decision"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "HANDLE_ARRIVED_LETTER",
+        "component": "activity",
+        "description": "Handles the voice story that arrived for the current road: read it aloud, skip it, or leave or decline a heart after listening.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "choice": {
+              "type": "string",
+              "enum": [
+                "PLAY",
+                "SKIP",
+                "SEND_HEART",
+                "NO_HEART"
+              ],
+              "description": "PLAY reads the story aloud, SKIP passes on it, SEND_HEART leaves a heart for the storyteller, NO_HEART declines to leave a heart."
+            }
+          },
+          "required": [
+            "choice"
+          ]
+        }
+      }
+    }
+  ]
+}

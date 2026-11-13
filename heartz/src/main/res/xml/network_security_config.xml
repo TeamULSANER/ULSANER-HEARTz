@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 릴리스: 평문 HTTP 금지. 기기 내 데모 백엔드는 네트워크를 쓰지 않는다. -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
+</network-security-config>
